@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maxScoreSightseeingPair(vector<int>& values) {
+        int maxScore = 0; // To store the maximum score
+        int maxI = values[0]; // To track the maximum value of values[i] + i
+
+        for (int j = 1; j < values.size(); ++j) {
+            // Update the maximum score using the current value of maxI
+            maxScore = std::max(maxScore, maxI + values[j] - j);
+
+            // Update maxI for the next iteration
+            maxI = std::max(maxI, values[j] + j);
+        }
+
+        return maxScore;
+    }
+};
